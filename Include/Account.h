@@ -6,7 +6,7 @@ class Account
     private:
         std::string m_strName;
         int m_iAccountNumber;
-        double m_dBalance;
+        double* m_dBalance;
     public:
         Account(std::string Name, int AccountNumber, double Balance);
         virtual void Deposit(double Amount);

@@ -3,20 +3,20 @@
 Account::Account(std::string Name, int AccountNumber, double Balance) 
         : m_strName(Name)
         , m_iAccountNumber(AccountNumber)
-        , m_dBalance(Balance)
 {
-            std::cout << "Account created>\nName: " << m_strName << "\nAccount Number: "
-                      << m_iAccountNumber << "\nBalance: " << m_dBalance << std::endl;
+    m_dBalance = new double(Balance);
+    std::cout << "Account created>\nName: " << m_strName << "\nAccount Number: "
+              << m_iAccountNumber << "\nBalance: " << *m_dBalance << std::endl;
 }
 
 void Account::Deposit(double Amount)
 {
-    m_dBalance += Amount;
+    *m_dBalance += Amount;
 }
 
 void Account::Withdraw(double Amount)
 {
-    m_dBalance -= Amount;
+    *m_dBalance -= Amount;
 }
 
 void Account::Display() const
@@ -26,5 +26,6 @@ void Account::Display() const
 
 Account::~Account()
 {
+    delete m_dBalance;
     std::cout << "All data is deleted" << std::endl;
 }
